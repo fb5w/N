@@ -1,0 +1,50 @@
+
+
+#Practical 4:Write a Java/C/C++/Python program to implement AES Algorithm.
+
+#AES Encryption
+
+#INPUT:
+
+# importing AES
+#
+from Crypto.Cipher import AES
+
+# encryption key
+key = b'C&F)H@McQfTjWnZr'
+
+# create new instance of cipher
+cipher = AES.new(key, AES.MODE_EAX)
+
+# data to be encrypted
+data = "".encode()
+
+# nonce is a random value generated each time we instantiate the cipher using new()
+nonce = cipher.nonce
+
+# encrypt the data
+ciphertext = cipher.encrypt(data)
+
+# print the encrypted data
+print("Cipher text:", ciphertext)
+
+
+#OUTPUT:
+
+##('Cipher text:', "\x02\x17\xecq\x81\x8b\x91\xb8|\xf4N\xb0\x87\xbb]\x89'\x16\xaajj\x9f\xa6\r\x1cK^a!C")
+
+
+
+#AES  Decryption
+
+#INPUT:
+# generate new instance with the key and nonce same as encryption cipher
+cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
+
+# decrypt the data
+plaintext = cipher.decrypt(ciphertext)
+print("Plain text:", plaintext)
+
+#OUTPUT:
+#('Plain text:', 'This a Sample Text  used as Plaintext for the Program')
+
